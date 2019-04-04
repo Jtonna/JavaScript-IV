@@ -30,12 +30,12 @@ Prototype Refactor
 
 class GameObject {
     constructor(gameAttributes){
-        this.NewCreatedAt = gameAttributes.createdAt;
-        this.NewName = gameAttributes.name;
-        this.NewDimensions = gameAttributes.dimensions;
+        this.newCreatedAt = gameAttributes.createdAt;
+        this.newName = gameAttributes.name;
+        this.newDimensions = gameAttributes.dimensions;
     }
     destroy(){
-    return `${this.NewName} was removed from the game.`; 
+    return `${this.newName} was removed from the game.`; 
     }
 }
   
@@ -45,12 +45,13 @@ class GameObject {
     * takeDamage() // prototype method -> returns the string '<object name> took damage.'
     * should inherit destroy() from GameObject's prototype
   */
-class CharacterStats {
+class CharacterStats extends GameObject {
     constructor(charAttribs){
-        this.NewHealthPoints = charAttribs.healthPoints;
+        super(charAttribs);
+        this.newHealthPoints = charAttribs.healthPoints;
     }
     takeDamage(){
-        return `${this.NewHealthPoints} took damage.`
+        return `${this.newHealthPoints} took damage.`
     }
 }
   
@@ -65,14 +66,15 @@ class CharacterStats {
     * should inherit takeDamage() from CharacterStats
   */
    
-class Humanoid{
+class Humanoid extends CharacterStats {
     constructor(humanoidAttribs){
-        this.NewTeam = humanoidAttribs.team;
-        this.NewWeapons = humanoidAttribs.weapons;
-        this.NewLanguage = humanoidAttribs.language;
+        super(humanoidAttribs);
+        this.newTeam = humanoidAttribs.team;
+        this.newWeapons = humanoidAttribs.weapons;
+        this.newLanguage = humanoidAttribs.language;
     }
     greet(){
-        return `${this.NewName} offeres a greeting in ${this.lanugage}.`
+        return `${this.newName} offeres a greeting in ${this.newLanguage}.`
     }
 }
   /*
