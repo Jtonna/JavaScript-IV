@@ -30,12 +30,12 @@ Prototype Refactor
 
 class GameObject {
     constructor(gameAttributes){
-        this.newCreatedAt = gameAttributes.createdAt;
-        this.newName = gameAttributes.name;
-        this.newDimensions = gameAttributes.dimensions;
+        this.createdAt = gameAttributes.createdAt;
+        this.dimensions = gameAttributes.dimensions; 
+        this.name = gameAttributes.name;
     }
     destroy(){
-    return `${this.newName} was removed from the game.`; 
+    return `${this.name} was removed from the game.`; 
     }
 }
   
@@ -48,10 +48,11 @@ class GameObject {
 class CharacterStats extends GameObject {
     constructor(charAttribs){
         super(charAttribs);
-        this.newHealthPoints = charAttribs.healthPoints;
+        this.healthPoints = charAttribs.healthPoints;
+
     }
     takeDamage(){
-        return `${this.newHealthPoints} took damage.`
+        return `${this.name} took damage.`
     }
 }
   
@@ -69,12 +70,12 @@ class CharacterStats extends GameObject {
 class Humanoid extends CharacterStats {
     constructor(humanoidAttribs){
         super(humanoidAttribs);
-        this.newTeam = humanoidAttribs.team;
-        this.newWeapons = humanoidAttribs.weapons;
-        this.newLanguage = humanoidAttribs.language;
+        this.team = humanoidAttribs.team;
+        this.weapons = humanoidAttribs.weapons;
+        this.language = humanoidAttribs.language;
     }
     greet(){
-        return `${this.newName} offeres a greeting in ${this.newLanguage}.`
+        return `${this.name} offeres a greeting in ${this.language}.`
     }
 }
   /*
